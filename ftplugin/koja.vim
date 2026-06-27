@@ -22,21 +22,15 @@ if !exists("loaded_matchit")
   silent! packadd matchit
 endif
 if exists("loaded_matchit")
+  " Every block opener is closed by the same `end`, so they must all share ONE
+  " match group. matchit only counts nesting within a single group, so the
+  " older per-opener groups (`fn:end`, `match:end`, ...) made `%` stop at the
+  " first `end` rather than the matching one. `when` is deliberately excluded —
+  " it is an inline match-arm guard (`x when cond ->`), not a block keyword.
   let b:match_words =
-        \ '\<fn\>:\<end\>,'
-        \ . '\<struct\>:\<end\>,'
-        \ . '\<enum\>:\<end\>,'
-        \ . '\<impl\>:\<end\>,'
-        \ . '\<extend\>:\<end\>,'
-        \ . '\<protocol\>:\<end\>,'
-        \ . '\<if\>:\<else\>:\<end\>,'
-        \ . '\<unless\>:\<end\>,'
-        \ . '\<match\>:\<end\>,'
-        \ . '\<cond\>:\<end\>,'
-        \ . '\<for\>:\<end\>,'
-        \ . '\<loop\>:\<end\>,'
-        \ . '\<while\>:\<end\>,'
-        \ . '\<receive\>:\<after\>:\<end\>'
+        \ '\<\%(fn\|struct\|enum\|impl\|extend\|protocol\|if\|unless\|match\|cond\|for\|loop\|while\|receive\)\>'
+        \ . ':\<\%(else\|after\)\>'
+        \ . ':\<end\>'
   let b:match_skip = 's:comment\|string'
 endif
 
