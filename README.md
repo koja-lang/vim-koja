@@ -1,5 +1,9 @@
 # vim-koja
 
+[![CI](https://github.com/koja-lang/vim-koja/actions/workflows/ci.yml/badge.svg)](https://github.com/koja-lang/vim-koja/actions/workflows/ci.yml)
+[![GitHub Release](https://img.shields.io/github/v/release/koja-lang/vim-koja)](https://github.com/koja-lang/vim-koja/releases)
+[![Last Updated](https://img.shields.io/github/last-commit/koja-lang/vim-koja.svg)](https://github.com/koja-lang/vim-koja/commits/main)
+
 A Vim and Neovim plugin for the [Koja programming language](https://github.com/koja-lang/koja): syntax highlighting, indentation, and `:make` integration via the `koja` compiler.
 
 ## Features
