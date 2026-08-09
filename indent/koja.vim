@@ -21,7 +21,7 @@ endif
 
 " Note the patterns are very magic (\v), so word boundaries are bare < >
 " and a backslashed \> would be a literal greater-than.
-let s:block_openers = '\v^\s*(priv\s+)?(fn|struct|enum|impl|extend|protocol|if|unless|match|cond|for|loop|while|receive|after|else|when)>'
+let s:block_openers = '\v^\s*(priv\s+)?(fn|struct|enum|builtin|impl|extend|protocol|if|unless|match|cond|for|loop|while|receive|after|else|when)>'
 let s:arrow_end     = '\v-\>\s*(#.*)?$'
 let s:dedent_kws    = '\v^\s*(end|else|after|when)>'
 let s:single_line   = '\v<(if|unless)>.*<end>\s*$'

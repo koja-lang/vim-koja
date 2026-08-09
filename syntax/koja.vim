@@ -15,12 +15,13 @@ syn sync fromstart
 
 " --- Keywords ---------------------------------------------------------------
 
-syn keyword kojaKeyword     after alias as break const end enum extend fn for impl
+syn keyword kojaKeyword     after alias as break builtin const end enum extend fn for impl
 syn keyword kojaKeyword     in priv protocol receive return spawn struct type
 syn keyword kojaConditional cond else if match unless when
 syn keyword kojaRepeat      for loop while
 syn keyword kojaOperatorKw  and not or
 syn keyword kojaBoolean     false true
+syn match kojaErrorChannel  /\<\%(try\|fail\|rescue\)\>[?!]\@!/
 syn keyword kojaSelf        self
 syn keyword kojaBinaryMod   signed unsigned big little byte
 
@@ -79,6 +80,7 @@ syn match kojaOperator      /::/
 syn match kojaOperator      /|/
 syn match kojaOperator      /[+\-*/%]=/
 syn match kojaOperator      /[!=]=\|[<>]=/
+syn match kojaOperator      /\s\zs!\ze\s/
 
 " --- Comments ---------------------------------------------------------------
 
@@ -91,6 +93,7 @@ hi def link kojaKeyword       Keyword
 hi def link kojaConditional   Conditional
 hi def link kojaRepeat        Repeat
 hi def link kojaOperatorKw    Keyword
+hi def link kojaErrorChannel  Keyword
 hi def link kojaBoolean       Boolean
 hi def link kojaSelf          Constant
 hi def link kojaBinaryMod     Number
