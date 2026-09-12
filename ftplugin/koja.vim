@@ -28,7 +28,7 @@ if exists("loaded_matchit")
   " first `end` rather than the matching one. `when` is deliberately excluded —
   " it is an inline match-arm guard (`x when cond ->`), not a block keyword.
   let b:match_words =
-        \ '\<\%(fn\|struct\|enum\|builtin\|impl\|extend\|protocol\|if\|unless\|match\|cond\|for\|loop\|while\|receive\)\>'
+        \ '\<\%(fn\|struct\|enum\|builtin\|impl\|extend\|protocol\|if\|match\|cond\|for\|loop\|while\|receive\)\>'
         \ . ':\<\%(else\|after\)\>'
         \ . ':\<end\>'
   let b:match_skip = 's:comment\|string'
