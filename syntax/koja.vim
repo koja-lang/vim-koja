@@ -55,6 +55,10 @@ syn region kojaMultiString  start=/"""/ end=/"""/ contains=kojaInterpolation,koj
 syn match  kojaEscape       /\\[nrt\\"#]/ contained
 syn region kojaInterpolation matchgroup=kojaInterpDelim start=/#{/ end=/}/ contained contains=TOP
 
+" --- Functions --------------------------------------------------------------
+
+syn match kojaFunctionRef    /&[A-Za-z_][A-Za-z0-9_.]*\/\d\+/
+
 " --- Package qualifiers -----------------------------------------------------
 " Packages are PascalCase (`Net`, `HTTP`, `JSON`, `Crypto`, `Global`, ...) and
 " only ever appear as the head of a dotted path: `Net.TCPSocket`,
@@ -106,6 +110,7 @@ hi def link kojaMultiString   String
 hi def link kojaEscape        SpecialChar
 hi def link kojaInterpolation Normal
 hi def link kojaInterpDelim   Special
+hi def link kojaFunctionRef   Function
 hi def link kojaModuleQualifier Include
 hi def link kojaOperator      Operator
 hi def link kojaTypeSep       Operator
