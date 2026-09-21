@@ -5,7 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.5.0] - 2026-09-21
+
+Supports features for Koja 0.19.
+
+### Added
+
+- Highlighting, indentation, and `%` matching for `test "description"` blocks, and highlighting for the `assert` statement.
+- Highlighting for function and constant aliases (`alias JSON.decode`). The package head is a qualifier, not a type or constant.
+- `compiler/kojatest.vim`. `:compiler kojatest` makes `:make` run `koja test` and puts each failed assertion, `fail`, and crash in the quickfix list at its line. Skips and the summary are left out.
+
+### Fixed
+
+- `:make` fills the quickfix list again. The compiler prints one-line diagnostics when its output is not a terminal, and the `errorformat` still expected the multi-line form. `makeprg` now asks for `--diagnostics short` and the `errorformat` reads `file:line:col: error: message`, with warnings and notes typed the same way.
 
 ### Removed
 

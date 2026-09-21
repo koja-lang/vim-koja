@@ -7,20 +7,15 @@ if exists("current_compiler")
 endif
 let current_compiler = "koja"
 
-CompilerSet makeprg=koja\ check\ --no-color\ %
+CompilerSet makeprg=koja\ check\ --no-color\ --diagnostics\ short\ %
 
-" Koja diagnostic output (from koja-driver/src/diagnostics.rs):
+" Short diagnostics (koja-driver/src/diagnostics.rs), one line each:
 "
-"   error: type mismatch: expected `Int`, found `String`
-"    --> path/to/file.koja:5:12
-"     |
-"   5 | some source line
-"     |     ^^^
-"
-" Lines 1-2 carry the useful data; the rest is context for humans.
+"   src/app.koja:5:12: error: type mismatch. Expected `Int`, found `String`
+"   src/app.koja:9:3: warning: unused binding `x`
+"   src/app.koja:5:12: note: the return type is declared here
 CompilerSet errorformat=
-      \%Eerror:\ %m,
-      \%Wwarning:\ %m,
-      \%Cnote:\ %m,
-      \%C\ %#-->\ %f:%l:%c,
+      \%f:%l:%c:\ %trror:\ %m,
+      \%f:%l:%c:\ %tarning:\ %m,
+      \%f:%l:%c:\ %tote:\ %m,
       \%-G%.%#

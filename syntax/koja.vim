@@ -22,6 +22,7 @@ syn keyword kojaRepeat      for loop while
 syn keyword kojaOperatorKw  and not or
 syn keyword kojaBoolean     false true
 syn match kojaErrorChannel  /\<\%(try\|fail\|rescue\)\>[?!]\@!/
+syn match kojaTestKw        /\<\%(test\|assert\)\>[?!]\@!/
 syn keyword kojaSelf        self
 syn keyword kojaBinaryMod   signed unsigned big little byte
 
@@ -67,6 +68,11 @@ syn match kojaFunctionRef    /&[A-Za-z_][A-Za-z0-9_.]*\/\d\+/
 
 syn match kojaModuleQualifier /\<[A-Z][A-Za-z0-9]*\ze\.[A-Z]/
 
+" `alias Pkg.func` and `alias Pkg.CONST` have no PascalCase after the dot.
+" The lookbehind, not \zs, starts the match on the head so it beats the
+" ALL_CAPS constant rule for `alias JSON.decode`.
+syn match kojaModuleQualifier /\%(\<alias\s\+\)\@<=[A-Z][A-Za-z0-9]*\ze\.\%(\l\|[A-Z][A-Z0-9_]\+\>\)/
+
 " --- Typed assignments (x: Type = value) ------------------------------------
 " Require a real type head after ':' (PascalCase type name or `fn`), so prose
 " like `key: value` in docstrings does not match.
@@ -98,6 +104,7 @@ hi def link kojaConditional   Conditional
 hi def link kojaRepeat        Repeat
 hi def link kojaOperatorKw    Keyword
 hi def link kojaErrorChannel  Keyword
+hi def link kojaTestKw        Keyword
 hi def link kojaBoolean       Boolean
 hi def link kojaSelf          Constant
 hi def link kojaBinaryMod     Number

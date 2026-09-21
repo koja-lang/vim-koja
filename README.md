@@ -10,9 +10,10 @@ A Vim and Neovim plugin for the [Koja programming language](https://github.com/k
 
 - Filetype detection for `.koja` and `.kojs`.
 - Syntax highlighting (keywords, types, strings with interpolation, numbers, annotations, comments).
-- Auto-indentation that follows block openers (`fn`, `if`, `match`, `for`, …) and dedents on `end` / `else` / `after` / `when`.
-- `matchit` support — jump between block delimiters (`fn`…`end`, `if`…`else`…`end`, …) with `%`.
+- Auto-indentation that follows block openers (`fn`, `test`, `if`, `match`, `for`, …) and dedents on `end` / `else` / `after` / `when`.
+- `matchit` support — jump between block delimiters (`fn`…`end`, `test`…`end`, `if`…`else`…`end`, …) with `%`.
 - `:make` integration: runs `koja check` and populates the quickfix list with parsed errors and warnings.
+- `:compiler kojatest` switches `:make` to `koja test`, so each failed assertion, `fail`, and crash lands in the quickfix list at its line.
 
 This plugin covers syntax and editing only. For language-server features, pair it with `koja-lsp` through your LSP client (see [below](#language-server-optional)).
 
@@ -57,3 +58,4 @@ Standard Vim runtimepath layout — the repository root is the plugin:
 - `syntax/koja.vim` — highlighting rules.
 - `indent/koja.vim` — `indentexpr`-based auto-indentation.
 - `compiler/koja.vim` — `makeprg` and `errorformat` for `:make` (runs `koja check`).
+- `compiler/kojatest.vim` — the same for `koja test`, selected with `:compiler kojatest`.
